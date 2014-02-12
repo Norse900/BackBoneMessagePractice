@@ -7,45 +7,46 @@
 $("#loadTest").text().content += ("loaded messageSpec");
 describe("Message Specs", function () {
     describe("The Message Object", function () {
-        var messageObject = new SecretMessage();
+        var messageObject = new app.SecretMessage();
         describe("Message Title Initialization Test", function () {
             it("should have a message title", function () {
-                expect(messageObject.title.length).toBeGreaterThan(0);
+                expect(messageObject.attributes.title.length).toBeGreaterThan(0);
+
             });
             it("should have a default title of 'default title'", function () {
-                expect(messageObject.title).toContain("default title");
+                expect(messageObject.attributes.title).toContain("default title");
             });
         });
         describe("Message Body Initialization Tests", function () {
             it("should have a body", function () {
-                expect(messageObject.title.length).toBeGreaterThan(0);
+                expect(messageObject.attributes.body.length).toBeGreaterThan(0);
             })
             it("should have a default body content of 'default body text'", function () {
-                expect(messageObject.body).toContain("default body text");
+                expect(messageObject.attributes.body).toContain("default body text");
             });
         });
         describe("Owner Initialization Tests", function () {
             it("should have an owner", function () {
-                expect(messageObject.owner.length).toBeGreaterThan(0);
+                expect(messageObject.attributes.owner.length).toBeGreaterThan(0);
             })
             it("should have a default owner of 'default owner'", function () {
-                expect(messageObject.owner).toContain("default owner");
+                expect(messageObject.attributes.owner).toContain("default owner");
             });
         });
         describe("Recipient Initialization Tests", function () {
             it("should have a recipient", function () {
-                expect(messageObject.recipient.length).toBeGreaterThan(0);
+                expect(messageObject.attributes.recipient.length).toBeGreaterThan(0);
             })
             it("should have a default recipient of 'default recipient'", function () {
-                expect(messageObject.recipient).toContain("default recipient");
+                expect(messageObject.attributes.recipient).toContain("default recipient");
             });
         });
         describe("Status Initialization Tests", function () {
             it("should have a status", function () {
-                expect(messageObject.status.length).toBeGreaterThan(0);
+                expect(messageObject.attributes.status.length).toBeGreaterThan(0);
             })
             it("should have a default status of 'unsent'", function () {
-                expect(messageObject.status).toContain("unsent");
+                expect(messageObject.attributes.status).toContain("unsent");
             });
         });
 
@@ -55,4 +56,8 @@ describe("Message Specs", function () {
 
         });
     });
+    describe("Displaying a Message",function(){
+
+    });
+    describe("Creating a Meeting", function(){});
 });
