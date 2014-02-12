@@ -1,0 +1,16 @@
+{
+    "userContacts": {
+        "contact1": {
+            "name": "Curtis_The_Custard_Cooler"
+        },
+        "contact2": {
+            "name": "Bob_The_HotDog_Fisher"
+        },
+        "contact3": {
+            "name": "Phil_The_Phone_Phreaker"
+        },
+        "contact4": {
+            "name": "Stew_The_Stump_Remover"
+        }
+    }
+}

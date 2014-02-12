@@ -1,0 +1,40 @@
+{
+    "userMessages": {
+        "message1": {
+
+            "title": "Running Late",
+            "body": "message1_body_text",
+            "owner": "Curtis_The_Custard_Cooler",
+            "recipient": "message1_recipient",
+            "status": "sent",
+            "dateSent":"00/00/0000"
+        },
+        "message2": {
+
+            "title": "Waiting for the 'big one'",
+            "body": "message2_body_text",
+            "owner": "Bob_The_HotDog_Fisher",
+            "recipient": "message2_recipient",
+            "status": "sent",
+            "dateSent":"00/00/0000"
+        },
+        "message3": {
+
+            "title": "Currently on hold",
+            "body": "message3_body_text",
+            "owner": "Phil_The_Phone_Phreaker",
+            "recipient": "message3_recipient",
+            "status": "sent",
+            "dateSent":"00/00/0000"
+        },
+        "message4": {
+
+            "title": "Up to my knees in dirt",
+            "body": "message4_body_text",
+            "owner": "Stew_The_Stump_Remover",
+            "recipient": "message4_recipient",
+            "status": "sent",
+            "dateSent":"00/00/0000"
+        }
+    }
+}
