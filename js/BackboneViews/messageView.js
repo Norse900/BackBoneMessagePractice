@@ -3,13 +3,13 @@
  */
 var app = app || {};
 app.MessageMainView = Backbone.View.extend({
-    el: "#MessageArea",
-    messageContentTemplate: _.template($("#messageContentArea").html()),
+    el: $("#MessageArea"),
+    messageContentTemplate: _.template($("#messageArea").html()),
     initialize: function () {
         this.listenTo(this.model, 'change', this.render)
     },
     render:function(){
-        this.$el.html(' ' +
+        this.$el.html(this.messageContentTemplate(' ' +
             '<div id="messageContentArea">' +
             '   <p>Message Area' +
             '       <script id="messagesContentDisplay" type="text/template">' +
@@ -17,7 +17,7 @@ app.MessageMainView = Backbone.View.extend({
             '<li><%= body %></li>' +
             '</script>' +
             '</p>'+
-            '</div>');
+            '</div>'));
         return this;
     }
 });

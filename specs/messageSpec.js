@@ -8,15 +8,23 @@
     describe("BackBoneMessagePracticeTests", function () {
         var messageObject = new app.SecretMessage();
         var messageCollection = new app.MessageCollection();
-        var getTestMessage;
-        var testMessageId;
+        var testMessageId = "" + messageObject.attributes.title + "*" + messageObject.attributes.dateSent; //default title*0/0/0000
 
-        testMessageId = "" + messageObject.attributes.title + "*" + messageObject.attributes.dateSent; //default title*0/0/0000
-
+        var mainViewObject = new app.MessageMainView();
         afterEach(function () {
             localStorage.clear();
         });
-
+describe("Setup object verification", function(){
+    it("should have created a SecretMessage object", function(){
+        expect(messageObject).not.toBeNull();
+    });
+    it("should have created a Message Collection object", function(){
+        expect(messageCollection).not.toBeNull();
+    });
+    it("should have created the main View object", function(){
+        expect(mainViewObject).not.toBeNull();
+    });
+});
         describe("Message Specs", function () {
             describe("The Message Object", function () {
                 describe("Message Title Initialization Test", function () {
