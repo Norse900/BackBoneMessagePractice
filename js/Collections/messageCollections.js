@@ -19,9 +19,9 @@ app.MessageCollection = Backbone.Collection.extend({
     getMessage: function (messageId) {
         var storage = window.localStorage;
         try {
-            var retrieveMessageItem = storage.getItem(messageId);
-            //_.where(storage, messageId);
-            return retrieveMessageItem[0];
+            var retrieveMessageItem = storage.getItem(messageId) + "";
+            //console.log("retrieved : " + retrieveMessageItem);
+            return retrieveMessageItem;
         } catch (e) {
             return false;
         }
@@ -29,26 +29,15 @@ app.MessageCollection = Backbone.Collection.extend({
     saveCurrentMessage: function (messageId, messageData) {
         var storage = window.localStorage;
         try {
-            var checkIfNew = _.where(storage, "messageId");
-            //console.log("zero element : " + checkIfNew[0]);
-            if (checkIfNew.length < 1) {
-                //console.log("saving message to localStorage");
-                var saveMessageItem = storage.setItem(messageId, messageData);
-                if (saveMessageItem) {
-                    return "Success";
-                }
-                else {
-                    try {
-                        storage.setItem(messageId, messageData);
-                    } catch (e) {
-                        return;
-                    }
-
-                }
+            var checkIfNew = storage.getItem(messageId);
+            if (checkIfNew) {
+                localStorage.removeItem(checkIfNew);
             }
+            var stringifiedMessage = JSON.stringify(messageData);
+            var saveMessageItem = storage.setItem(messageId, stringifiedMessage);
+            return true;
         } catch (e) {
-            return;
-
+            return null;
         }
     }
 
