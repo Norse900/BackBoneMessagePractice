@@ -8,9 +8,15 @@
 describe("Message Specs", function () {
     var messageObject = new app.SecretMessage();
     var messageCollection = new app.MessageCollection();
-    messageCollection.saveCurrentMessage(("" + messageObject.attributes.title + "*" + messageObject.attributes.dateSent), messageObject.toJSON());
-    var tryToGetIt = messageCollection.getCurrentMessages("" + messageObject.attributes.title + "*" + messageObject.attributes.dateSent);
-    console.log("try " + tryToGetIt);
+    var testMessageId = messageObject.attributes.title + "*" + messageObject.attributes.dateSent; //default title*0/0/0000
+    var getTestMessage = messageCollection.getMessage(testMessageId);
+    try {
+        messageCollection.saveCurrentMessage(("" + messageObject.attributes.title + "*" + messageObject.attributes.dateSent), messageObject.toJSON());
+    } catch (e) {
+        console.log("inside message spec error : " + e.message);
+    }
+    var tryToGetIt = messageCollection.getMessage("" + messageObject.attributes.title + "*" + messageObject.attributes.dateSent);
+    console.log("try " + tryToGetIt + " end of localStorage");
 
     describe("The Message Object", function () {
         describe("Message Title Initialization Test", function () {
@@ -61,8 +67,9 @@ describe("Message Specs", function () {
 
         });
     });
-    describe("Displaying a Message",function(){
+    describe("Displaying a Message", function () {
 
     });
-    describe("Creating a Meeting", function(){});
+    describe("Creating a Meeting", function () {
+    });
 });

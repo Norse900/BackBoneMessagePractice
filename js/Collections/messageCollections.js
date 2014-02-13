@@ -16,32 +16,39 @@ app.MessageCollection = Backbone.Collection.extend({
         }
     },
 
-    getCurrentMessages: function (messageId) {
+    getMessage: function (messageId) {
         var storage = window.localStorage;
-        var retrieveMessageItem = _.where(storage, "messageId");
-        if (retrieveMessageItem) {
-            return retrieveMessageItem
-        }
-        else {
-            return null;
+        try {
+            var retrieveMessageItem = storage.getItem(messageId);
+            //_.where(storage, messageId);
+            return retrieveMessageItem[0];
+        } catch (e) {
+            return false;
         }
     },
     saveCurrentMessage: function (messageId, messageData) {
         var storage = window.localStorage;
-        var checkIfNew = _.where(storage, "messageId");
-        if (!checkIfNew) {
-            var saveMessageItem = storage.setItem(messageId, messageData);
-            if (saveMessageItem) {
-                return "Success";
-            }
-            else {
-                try {
-                    storage.setItem(messageId, messageData);
-                } catch (e) {
-                    return e.message;
+        try {
+            var checkIfNew = _.where(storage, "messageId");
+            //console.log("zero element : " + checkIfNew[0]);
+            if (checkIfNew.length < 1) {
+                //console.log("saving message to localStorage");
+                var saveMessageItem = storage.setItem(messageId, messageData);
+                if (saveMessageItem) {
+                    return "Success";
                 }
+                else {
+                    try {
+                        storage.setItem(messageId, messageData);
+                    } catch (e) {
+                        return;
+                    }
 
+                }
             }
+        } catch (e) {
+            return;
+
         }
     }
 
