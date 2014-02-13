@@ -13,10 +13,10 @@ app.MessageMainView = Backbone.View.extend({
             '<div id="messageContentArea">' +
             '   <p>Message Area' +
             '       <script id="messagesContentDisplay" type="text/template">' +
-                        '<li><%= dateSent %></li>'+
-                        '<li><%= body %></li>' +
-                    '</script>' +
-                '</p>'+
+            '<li><%= dateSent %></li>'+
+            '<li><%= body %></li>' +
+            '</script>' +
+            '</p>'+
             '</div>');
         return this;
     }

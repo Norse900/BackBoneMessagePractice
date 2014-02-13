@@ -8,8 +8,23 @@
  *
  */
 var app = app || {};
-app.contactSideView = Backbone.View.extend({
-    el:"#contactListArea",
-    contactsSideTemplate: _.template($("#contactListUL").html())
-
+app.ContactsListView = Backbone.View.extend({
+    el: "#contactListArea",
+    contactListAreaTemplate: _.template($("#contactListArea").html()),
+    initialize: function () {
+        this.listenTo(this.model, 'change', this.render)
+    },
+    render:function(){
+        this.$el.html(' ' +
+            '<div id="contactListContentArea">' +
+            '    <p>Contacts List' +
+            '       <ul id="contactListUL">' +
+            '           <script id="contactsList" type="text/template">' +
+            '               <li><%= name %></li>'+
+            '           </script>' +
+            '       </ul>' +
+            '   </p>'+
+            '</div>');
+        return this;
+    }
 });

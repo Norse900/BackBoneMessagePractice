@@ -4,10 +4,15 @@
 /**
  * Created by montgomery on 2/11/14.
  */
-$("#loadTest").text().content += ("loaded messageSpec");
+
 describe("Message Specs", function () {
+    var messageObject = new app.SecretMessage();
+    var messageCollection = new app.MessageCollection();
+    messageCollection.saveCurrentMessage(("" + messageObject.attributes.title + "*" + messageObject.attributes.dateSent), messageObject.toJSON());
+    var tryToGetIt = messageCollection.getCurrentMessages("" + messageObject.attributes.title + "*" + messageObject.attributes.dateSent);
+    console.log("try " + tryToGetIt);
+
     describe("The Message Object", function () {
-        var messageObject = new app.SecretMessage();
         describe("Message Title Initialization Test", function () {
             it("should have a message title", function () {
                 expect(messageObject.attributes.title.length).toBeGreaterThan(0);
@@ -20,7 +25,7 @@ describe("Message Specs", function () {
         describe("Message Body Initialization Tests", function () {
             it("should have a body", function () {
                 expect(messageObject.attributes.body.length).toBeGreaterThan(0);
-            })
+            });
             it("should have a default body content of 'default body text'", function () {
                 expect(messageObject.attributes.body).toContain("default body text");
             });
@@ -28,7 +33,7 @@ describe("Message Specs", function () {
         describe("Owner Initialization Tests", function () {
             it("should have an owner", function () {
                 expect(messageObject.attributes.owner.length).toBeGreaterThan(0);
-            })
+            });
             it("should have a default owner of 'default owner'", function () {
                 expect(messageObject.attributes.owner).toContain("default owner");
             });
@@ -36,7 +41,7 @@ describe("Message Specs", function () {
         describe("Recipient Initialization Tests", function () {
             it("should have a recipient", function () {
                 expect(messageObject.attributes.recipient.length).toBeGreaterThan(0);
-            })
+            });
             it("should have a default recipient of 'default recipient'", function () {
                 expect(messageObject.attributes.recipient).toContain("default recipient");
             });
@@ -44,7 +49,7 @@ describe("Message Specs", function () {
         describe("Status Initialization Tests", function () {
             it("should have a status", function () {
                 expect(messageObject.attributes.status.length).toBeGreaterThan(0);
-            })
+            });
             it("should have a default status of 'unsent'", function () {
                 expect(messageObject.attributes.status).toContain("unsent");
             });
