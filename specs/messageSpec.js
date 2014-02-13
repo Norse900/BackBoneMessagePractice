@@ -10,7 +10,7 @@
         var messageCollection = new app.MessageCollection();
         var testMessageId = "" + messageObject.attributes.title + "*" + messageObject.attributes.dateSent; //default title*0/0/0000
 
-        var mainViewObject = new app.MessageMainView();
+        var mainViewObject = new app.MainMessageView();
         afterEach(function () {
             localStorage.clear();
         });

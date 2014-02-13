@@ -9,6 +9,9 @@ app.SecretMessage = Backbone.Model.extend({
         status: "unsent",
         dateSent: "0/0/0000"
     },
+    urlRoot:function(){
+        return this;
+    },
 
     setTitle:function(titleNew){
         this.set({title:titleNew});

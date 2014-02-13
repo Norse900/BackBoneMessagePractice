@@ -2,9 +2,9 @@
  * Created by montgomery on 2/11/14.
  */
 var app = app || {};
-
 app.MessageCollection = Backbone.Collection.extend({
     model: app.SecretMessage,
+    url:'',
     getAllMessages: function (messageId) {
         var storage = window.localStorage;
         var retrieveMessages = _.where(storage, !null);
@@ -42,3 +42,5 @@ app.MessageCollection = Backbone.Collection.extend({
     }
 
 });
+var messageCollection = new app.MessageCollection();
+

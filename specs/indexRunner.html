@@ -10,6 +10,9 @@
     <script src="../js/Models/contactsList.js"></script>
     <script src="../js/Models/currentUser.js"></script>
 
+    <script src="../js/Views/contactsView.js"></script>
+    <script src="../js/Views/messageView.js"></script>
+
 
     <script src="JasmineJSFiles/jasmine.js"></script>
     <script src="JasmineJSFiles/jasmine-html.js"></script>
@@ -33,26 +36,26 @@
         </ul>
     </div>
     <div id="messageArea">
-        <!--   <div id="messageContentArea">
-               <p>Message Area
-                   <script id="messagesContentDisplay" type="text/template">
-                       <li><%= dateSent %></li>
-                       <li><%= body %></li>
-                   </script>
-               </p>
-           </div> -->
+        <div id="messageContentArea">
+            <p>Message Area
+                <script id="messagesContentDisplay" type="text/template">
+                    <li><label>dateSent : </label><%= dateSent %></li>
+                    <li><label>Message Body : </label><%= body %></li>
+                </script>
+            </p>
+        </div>
 
     </div>
     <div id="contactListArea">
-       <!-- <div id="contactListContentArea">
-            <p>Contacts List
-            <ul id="contactListUL">
-                <script id="contactsList" type="text/template">
-                    <li><%= name %></li>
-                </script>
-            </ul>
-            </p>
-        </div> -->
+        <!-- <div id="contactListContentArea">
+             <p>Contacts List
+             <ul id="contactListUL">
+                 <script id="contactsList" type="text/template">
+                     <li><%= name %></li>
+                 </script>
+             </ul>
+             </p>
+         </div> -->
     </div>
 </div>
 
