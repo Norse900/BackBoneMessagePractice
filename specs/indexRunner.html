@@ -1,25 +1,11 @@
 <!DOCTYPE html>
 <html>
 <head>
+
     <script src="../js/jslibs/jquery-2.0.3.min.js"></script>
     <script src="../js/jslibs/underscore-min.js"></script>
     <script src="../js/jslibs/backbone-min.js"></script>
-
-    <script src="../js/Collections/messageCollections.js"></script>
-    <script src="../js/Models/message.js"></script>
-    <script src="../js/Models/contactsList.js"></script>
-    <script src="../js/Models/currentUser.js"></script>
-
-    <script src="../js/Views/contactsView.js"></script>
-    <script src="../js/Views/messageView.js"></script>
-
-
-    <script src="JasmineJSFiles/jasmine.js"></script>
-    <script src="JasmineJSFiles/jasmine-html.js"></script>
-    <script src="JasmineJSFiles/boot.js"></script>
-
     <link rel="stylesheet" href="JasmineJSFiles/jasmine.css">
-
     <title>jasmine MSBB Runner</title>
 </head>
 <body>
@@ -29,20 +15,21 @@
         <div id="userName"></div>
     </header>
     <div id="messagesListArea">
-        <ul id="messagesListUL">
-            <script id="messagesList" type="text/template">
+        <script id="messagesList" type="text/template">
+            <ul id="messagesListUL">
                 <li><span><%= owner %></span> <span> <%= title %></span></li>
-            </script>
-        </ul>
+            </ul>
+        </script>
     </div>
     <div id="messageArea">
         <div id="messageContentArea">
-            <p>Message Area
-                <script id="messagesContentDisplay" type="text/template">
-                    <li><label>dateSent : </label><%= dateSent %></li>
-                    <li><label>Message Body : </label><%= body %></li>
-                </script>
-            </p>
+            <script id="messagesContentDisplay" type="text/template">
+                <p>Message Area
+                <ul id="dateSentMessageBodyInfo">
+
+                </ul>
+                </p>
+            </script>
         </div>
 
     </div>
@@ -59,50 +46,14 @@
     </div>
 </div>
 
+<script src="../main.js"></script>
+
+<script src="JasmineJSFiles/jasmine.js"></script>
+<script src="JasmineJSFiles/jasmine-html.js"></script>
+<script src="JasmineJSFiles/boot.js"></script>
+
 <script src="messageSpec.js"></script>
 <script src="contactsListSpec.js"></script>
 <script src="userSpec.js"></script>
-<!--
-<script>
-    var ulHolder = {};
-    var ulHolderString = '';
-    var ulTemp = $("#messagesList").html();
-    var demoTemp = _.template(ulTemp);
-    $.ajax({
-        url: "messagesStumps.JSON",
-        async: false,
-        dataType: "json",
-        success: function (json) {
-            ulHolder = json;
-            //console.log(json);
-        }
-    });
-    for (message in ulHolder.userMessages) {
-        ulHolderString += (demoTemp(ulHolder.userMessages[message]));
-        //console.log(ulHolderString);
-    }
-    $("#messagesListUL").html(ulHolderString);
-</script>
-
-<script>
-    var ulHolder = {};
-    var ulHolderString = '';
-    var ulTemp = $("#contactsList").html();
-    var demoTemp = _.template(ulTemp);
-    $.ajax({
-        url: "contacts.JSON",
-        async: false,
-        dataType: "json",
-        success: function (json) {
-            ulHolder = json;
-            //console.log(json);
-        }
-    });
-    for (contact in ulHolder.userContacts) {
-        ulHolderString += (demoTemp(ulHolder.userContacts[contact]));
-       // console.log("contact : " + ulHolderString);
-    }
-    $("#contactListUL").html(ulHolderString);
-</script> -->
 </body>
 </html>

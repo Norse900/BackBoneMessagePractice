@@ -4,7 +4,9 @@
 var app = app || {};
 app.MessageCollection = Backbone.Collection.extend({
     model: app.SecretMessage,
-    url:'',
+    url:function(){
+        return app.SecretMessage;
+    },
     getAllMessages: function (messageId) {
         var storage = window.localStorage;
         var retrieveMessages = _.where(storage, !null);
@@ -42,5 +44,5 @@ app.MessageCollection = Backbone.Collection.extend({
     }
 
 });
-var messageCollection = new app.MessageCollection();
+app.MessageCollection = new app.MessageCollection();
 

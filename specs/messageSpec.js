@@ -4,13 +4,13 @@
 /**
  * Created by montgomery on 2/11/14.
  */
-(function () {
-    describe("BackBoneMessagePracticeTests", function () {
-        var messageObject = new app.SecretMessage();
-        var messageCollection = new app.MessageCollection();
-        var testMessageId = "" + messageObject.attributes.title + "*" + messageObject.attributes.dateSent; //default title*0/0/0000
 
-        var mainViewObject = new app.MainMessageView();
+    describe("BackBoneMessagePracticeTests", function () {
+
+        var messageObject = new SecretMessage();
+        var messageCollection = new MessageCollection();
+        var testMessageId = "" + messageObject.attributes.title + "*" + messageObject.attributes.dateSent; //default title*0/0/0000
+       // var mainViewObject = new app.MainMessageView();
         afterEach(function () {
             localStorage.clear();
         });
@@ -21,7 +21,7 @@ describe("Setup object verification", function(){
     it("should have created a Message Collection object", function(){
         expect(messageCollection).not.toBeNull();
     });
-    it("should have created the main View object", function(){
+    xit("should have created the main View object", function(){
         expect(mainViewObject).not.toBeNull();
     });
 });
@@ -101,4 +101,3 @@ describe("Setup object verification", function(){
             });
         });
     });
-})();

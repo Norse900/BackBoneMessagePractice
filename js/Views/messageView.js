@@ -1,23 +1,21 @@
 /**
  * Created by montgomery on 2/11/14.
  */
-var app = app || {};
-
-app.MainMessageView = Backbone.View.extend({
-    initialize: function (options) {
-        this.model = app.SecretMessage,
-            this.render = function () {
-                this.model.bind('change', this.render);
-                this.render();
-            } //missing the change event name here, probably a result of changing the active message.
-    },
+var MainMessageView = Backbone.View.extend({
+    template: _.template('' +
+        '<li><label>dateSent : </label><%= dateSent %></li>' +
+        '<li><label>Message Body : </label><%= body %></li>'),
     render: function () {
-        var variables = {dateSent: SecretMessage.dateSent, body:secretMessage.body};
-        var messageTemplate = _.template($("#messagesListUL").html(),variables);
-        this.el.html(messageTemplate);
-        return this;
+        var html = this.template({
+            dateSent: this.model.get('dateSent'),
+            body: this.model.get('body')
+        });
+        $(this.el).html(html);
     }
-
 });
 
-
+var messageView = new MainMessageView({
+    model: myMessage,
+    el: $("#dateSentMessageBodyInfo")
+});
+messageView.render();
