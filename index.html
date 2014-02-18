@@ -23,12 +23,13 @@
         <div id="messageContentArea">
 
             <p>Message Area
+            <ul id="dateSentMessageBodyInfo">
                 <script id="messagesContentDisplay" type="text/template">
-                    <ul id="dateSentMessageBodyInfo">
-                        <li><label>dateSent : </label><%= 'dateSent' %></li>
-                         <li><label>Message Body : </label><%= 'body' %></li>
-                    </ul>
+                    <li><label>dateSent : </label><%= dateSent %></li>
+                    <li><label>Message Body : </label><%= body %></li>
+
                 </script>
+            </ul>
             </p>
 
             <br/><br/> End of Message Area
