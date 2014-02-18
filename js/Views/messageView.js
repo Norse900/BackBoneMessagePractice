@@ -3,6 +3,7 @@
  */
 $(function () {
     var secretMessage = App.SecretMessage;
+    var messageCollection = App.MessageCollection;
     var mainMessageView = Backbone.View.extend({
         tagName: 'li',
         el: '#dateSentMessageBodyInfo',
@@ -10,6 +11,7 @@ $(function () {
         //template: _.template($("#messagesContentDisplay").html(),{model : secretMessage}),
         template2: _.template("dateSent : <%= model['dateSent'] %>  Message Body : <%= model['body'] %>"),
         initialize: function () {
+            this.collection = messageCollection;
             this.render(secretMessage);
             return this;
         },

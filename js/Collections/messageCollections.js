@@ -1,10 +1,11 @@
 /**
  * Created by montgomery on 2/11/14.
  */
-var App = App ||{};
-App.MessageCollection = Backbone.Collection.extend({
+var App = App || {};
+var messageToAdd = App.SecretMessage;
+var messageCollection = Backbone.Collection.extend({
     model: App.SecretMessage,
-    url:function(){
+    url: function () {
         return App.SecretMessage;
     },
     getAllMessages: function (messageId) {
@@ -45,3 +46,5 @@ App.MessageCollection = Backbone.Collection.extend({
 
 });
 
+
+App.MessageCollection = new messageCollection();

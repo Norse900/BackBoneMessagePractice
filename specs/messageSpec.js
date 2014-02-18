@@ -6,18 +6,24 @@
  */
 
 describe("BackBoneMessagePracticeTests", function () {
-    var App = App || {};
-    /*
-     var secretMessage = new App.SecretMessage();
-     var mainMessageView = new App.MainMessageView({model:secretMessage});
-    * */
-    var messageObject = new App.SecretMessage();
-    var messageCollection = new App.MessageCollection();
-    var testMessageId = "" + messageObject.get("title") + "*" + messageObject.get("dateSent"); //default title*0/0/0000
-    var mainViewObject = new App.MainMessageView();
-    afterEach(function () {
-        localStorage.clear();
+
+    var messageObject;
+    var messageCollection;
+    var testMessageId;
+    var mainViewObject;
+
+    beforeEach(function () {
+        messageObject = App.SecretMessage;
+        //messageCollection = App.MessageCollection;
+        //testMessageId = "" + messageObject.get("title") + "*" + messageObject.get("dateSent"); //default title*0/0/0000
+        mainViewObject = App.MainMessageView;
     });
+    afterEach(function () {
+            localStorage.clear();
+
+        }
+    )
+    ;
     describe("Setup object verification", function () {
         it("should have created a SecretMessage object", function () {
             expect(messageObject).not.toBeNull();
@@ -25,7 +31,7 @@ describe("BackBoneMessagePracticeTests", function () {
         it("should have created a Message Collection object", function () {
             expect(messageCollection).not.toBeNull();
         });
-        xit("should have created the main View object", function () {
+        it("should have created the main View object", function () {
             expect(mainViewObject).not.toBeNull();
         });
     });
@@ -74,15 +80,15 @@ describe("BackBoneMessagePracticeTests", function () {
             });
 
         });
-        describe("Getting a Message", function () {
+        xdescribe("Getting a Message", function () {
             localStorage.setItem("default title*0/0/0000", "messageBodyInsert");
-            var messageCollection = new app.MessageCollection();
-            var itemReturned = messageCollection.getMessage("default title*0/0/0000");
+            var itemCollection = new App.MessageCollection();
+            var itemReturned = itemCollection.getMessage("default title*0/0/0000");
             it("should have a key of 'getItemInsert'", function () {
                 expect(itemReturned.indexOf("messageBodyInsert")).toBeGreaterThan(-1);
             });
         });
-        describe("Saving a Message", function () {
+        xdescribe("Saving a Message", function () {
             describe("Saving a Message To Local Storage", function () {
                 describe("After clearing the localStorage of existing items", function () {
                     localStorage.clear();

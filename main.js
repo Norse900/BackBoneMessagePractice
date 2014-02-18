@@ -1,7 +1,7 @@
 (function ($) {
     var App = App || {};
     var messageModel = App.SecretMessage;
-   var mainMessageView = App.MainMessageView;
-    var placeholder = '';
-   console.log(mainMessageView);
+    var messageCollection = App.MessageCollection;
+    App.MessageCollection.add(messageModel);
+    var mainMessageView = App.MainMessageView;
 })(jQuery);
