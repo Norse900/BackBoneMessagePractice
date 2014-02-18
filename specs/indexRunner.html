@@ -43,7 +43,8 @@
              <p>Contacts List
              <ul id="contactListUL">
                  <script id="contactsListDisplay" type="text/template">
-                     <li><%= name %> <%= contactAddress %></li>
+                    <li>Name : <%= name %> Contact Address : <%= contactAddress %></li>
+
                  </script>
              </ul>
              </p>End of Contact List Area
@@ -53,16 +54,21 @@
 <script src="../js/Models/message.js"></script>
 <script src="../js/Collections/messageCollections.js"></script>
 <script src="../js/Views/messageView.js"></script>
+
 <script src="../js/Models/contact.js"></script>
 <script src="../js/Collections/contactCollection.js"></script>
+<script src="../js/Views/contactView.js"></script>
+<script src="../js/Views/contactsView.js"></script>
+
 <script src="../main.js"></script>
 
 <script src="JasmineJSFiles/jasmine.js"></script>
 <script src="JasmineJSFiles/jasmine-html.js"></script>
 <script src="JasmineJSFiles/boot.js"></script>
 
-<script src="messageSpec.js"></script>
-<script src="contactsListSpec.js"></script>
 <script src="userSpec.js"></script>
+<script src="contactsListSpec.js"></script>
+<script src="messageSpec.js"></script>
+
 </body>
 </html>

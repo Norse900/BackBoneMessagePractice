@@ -2,15 +2,21 @@
  * Created by montgomery on 2/18/14.
  */
 var App = App || {};
-var contactToAdd = App.Contact;
 var contactCollection = Backbone.Collection.extend({
-    model: App.SecretMessage,
+    model: App.Contact,
     url: function () {
-        return App.SecretMessage;
+        return App.Contact;
     },
-    getAllContacts: function (messageId) {
+
+    getAllContacts: function (knownItem) {
         var storage = window.localStorage;
-        var retrieveContacts = _.where(storage, !null);
+        var retrieveContacts;
+        if (knownItem) {
+            retrieveContacts = storage.getItem(knownItem);
+        } else {
+
+            retrieveContacts = _.where(storage, !null);
+        }
         if (retrieveContacts) {
             return retrieveContacts;
         }
