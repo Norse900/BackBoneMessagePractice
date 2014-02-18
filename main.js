@@ -2,6 +2,7 @@
     var App = App || {};
     var messageModel = App.SecretMessage;
     var messageCollection = App.MessageCollection;
-    App.MessageCollection.add(messageModel);
+    var contact = App.Contact;
+    var contactList = App.ContactCollection;
     var mainMessageView = App.MainMessageView;
 })(jQuery);

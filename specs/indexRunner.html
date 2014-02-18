@@ -39,19 +39,22 @@
 
     </div>
     <div id="contactListArea">
-        <!-- <div id="contactListContentArea">
+        <div id="contactListContentArea">
              <p>Contacts List
              <ul id="contactListUL">
-                 <script id="contactsList" type="text/template">
-                     <li><%= name %></li>
+                 <script id="contactsListDisplay" type="text/template">
+                     <li><%= name %> <%= contactAddress %></li>
                  </script>
              </ul>
-             </p>
-         </div> -->
+             </p>End of Contact List Area
+         </div>
     </div>
 </div>
 <script src="../js/Models/message.js"></script>
+<script src="../js/Collections/messageCollections.js"></script>
 <script src="../js/Views/messageView.js"></script>
+<script src="../js/Models/contact.js"></script>
+<script src="../js/Collections/contactCollection.js"></script>
 <script src="../main.js"></script>
 
 <script src="JasmineJSFiles/jasmine.js"></script>

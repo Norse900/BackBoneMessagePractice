@@ -5,7 +5,7 @@
  * Created by montgomery on 2/11/14.
  */
 
-describe("BackBoneMessagePracticeTests", function () {
+describe("BackBoneMessagePracticeTests Message Tests", function () {
 
     var messageObject;
     var messageCollection;
@@ -14,8 +14,8 @@ describe("BackBoneMessagePracticeTests", function () {
 
     beforeEach(function () {
         messageObject = App.SecretMessage;
-        //messageCollection = App.MessageCollection;
-        //testMessageId = "" + messageObject.get("title") + "*" + messageObject.get("dateSent"); //default title*0/0/0000
+        messageCollection = App.MessageCollection;
+        testMessageId = "" + messageObject.get("title") + "*" + messageObject.get("dateSent"); //default title*0/0/0000
         mainViewObject = App.MainMessageView;
     });
     afterEach(function () {
@@ -80,19 +80,21 @@ describe("BackBoneMessagePracticeTests", function () {
             });
 
         });
-        xdescribe("Getting a Message", function () {
+        describe("Getting a Message", function () {
             localStorage.setItem("default title*0/0/0000", "messageBodyInsert");
-            var itemCollection = new App.MessageCollection();
+            var itemCollection =App.MessageCollection;
             var itemReturned = itemCollection.getMessage("default title*0/0/0000");
             it("should have a key of 'getItemInsert'", function () {
                 expect(itemReturned.indexOf("messageBodyInsert")).toBeGreaterThan(-1);
             });
         });
-        xdescribe("Saving a Message", function () {
+        describe("Saving a Message", function () {
             describe("Saving a Message To Local Storage", function () {
                 describe("After clearing the localStorage of existing items", function () {
                     localStorage.clear();
-                    var saveGivenItem = messageCollection.saveCurrentMessage((testMessageId), messageObject.toJSON());
+                    var itemCollection =App.MessageCollection;
+                    var messageObject = App.SecretMessage;
+                    var saveGivenItem = itemCollection.saveCurrentMessage((testMessageId), messageObject.toJSON());
                     var itemReturned = JSON.parse(localStorage.getItem(testMessageId));
 
                     it("should have a saved an object with an id of 'default title*0/0/0000'", function () {
