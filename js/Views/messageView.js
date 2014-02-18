@@ -1,21 +1,28 @@
 /**
  * Created by montgomery on 2/11/14.
  */
-var MainMessageView = Backbone.View.extend({
-    template: _.template('' +
-        '<li><label>dateSent : </label><%= dateSent %></li>' +
-        '<li><label>Message Body : </label><%= body %></li>'),
-    render: function () {
-        var html = this.template({
-            dateSent: this.model.get('dateSent'),
-            body: this.model.get('body')
-        });
-        $(this.el).html(html);
-    }
-});
+$(function () {
+    var secretMessage = App.SecretMessage;
+    var mainMessageView = Backbone.View.extend({
+        tagName: 'li',
+        el: '#messagesList',
+        model: secretMessage,
+        template: _.template($("#messagesContentDisplay").html(),{model : secretMessage}),
+        template2: _.template("dateSent : <%= model['dateSent'] %>  Message Body : <%= model['body'] %>"),
+        initialize: function () {
+            this.render(secretMessage);
+            return this;
+        },
+        render: function (myModel) {
+            var item = myModel;
+            console.log("template2 : " + this.template2({model : myModel.attributes}));
+            var placeholder = '';
+            this.$el.html(this.template(myModel.toJSON()));
 
-var messageView = new MainMessageView({
-    model: myMessage,
-    el: $("#dateSentMessageBodyInfo")
+            return this;
+        }
+    });
+
+    App.MainMessageView = new mainMessageView({model: secretMessage, el: $("#messagesList")});
+
 });
-messageView.render();

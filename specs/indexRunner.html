@@ -26,7 +26,8 @@
             <script id="messagesContentDisplay" type="text/template">
                 <p>Message Area
                 <ul id="dateSentMessageBodyInfo">
-
+                    <li><label>dateSent : </label><%= m.dateSent %></li>
+                    <li><label>Message Body : </label><%= m.body %></li>
                 </ul>
                 </p>
             </script>
@@ -45,7 +46,8 @@
          </div> -->
     </div>
 </div>
-
+<script src="../js/Models/message.js"></script>
+<script src="../js/Views/messageView.js"></script>
 <script src="../main.js"></script>
 
 <script src="JasmineJSFiles/jasmine.js"></script>
