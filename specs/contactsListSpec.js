@@ -46,29 +46,104 @@ describe('BackBoneMessagePracticeTests ContactList Tests', function () {
         });
         describe("Contact Collection", function () {
             describe("check for items set at beginning of test run", function () {
+                var foundStorageItem = false;
+                var foundCurtis = false;
+                var foundCurtisAddress = false;
+                var foundBob = false;
+                var foundBobAddress = false;
+                var foundPhil = false;
+                var foundPhilAddress = false;
+                var foundStew = false;
+                var foundStewAddress = false;
+                var curtisCheck = [];
+                var item = JSON.parse(localStorage.getItem("userContacts"));
+                $.each(item, function (key, value) {
+                    var names = JSON.parse(item.contacts);
+                    $.each(names, function (key, value) {
+                        //console.log(key + ' = ' + value);
+                        var intermed = {name: value.name, contactAddress: value.contactAddress};
+                        curtisCheck.push(intermed);
+
+                    });
+                });
+
+                for (var i = 0; i < curtisCheck.length; i++) {
+                    var userCheck = curtisCheck[i].name;
+                    var addressCheck = curtisCheck[i].contactAddress;
+                    //I wanted to use 2 switch statements here, but they were acting up. I need to move on to gain a foothold with Collections.
+
+                    if (userCheck.indexOf("Curtis") >= 0) {
+                        foundCurtis = true;
+                    }
+
+                    if (userCheck.indexOf("Bob") >= 0) {
+                        foundBob = true;
+                    }
+
+                    if (userCheck.indexOf("Phil") >= 0) {
+                        foundPhil = true;
+                    }
+
+                    if (userCheck.indexOf("Stew") >= 0) {
+                        foundStew = true;
+                    }
+
+
+                    if (addressCheck.indexOf("Bakery")) {
+                        foundCurtisAddress = true;
+                    }
+
+                    if (addressCheck.indexOf("Main")) {
+                        foundBobAddress = true;
+                    }
+
+                    if (addressCheck.indexOf("tracing")) {
+                        foundPhilAddress = true;
+                    }
+
+                    if (addressCheck.indexOf("-76.309931, 22.499657")) {
+                        foundStewAddress = true;
+                    }
+
+
+                }
+
 
                 it("should find the 'userContacts' object in localStorage", function () {
                     checkStorage = localStorage.getItem("userContacts");
 
                     expect(checkStorage.length).toBeGreaterThan(10);
+                    foundStorageItem = true;
                 });
+
+
                 it("should find the 'Curtis' entry", function () {
-                    var curtisCheck = [];
-                    var item = JSON.parse(localStorage.getItem("userContacts"));
-                    $.each(item, function (key, value) {
-                        var names = JSON.parse(item.contacts);
-                        $.each(names, function (key, value) {
-                            //console.log(key + ' = ' + value);
-                            curtisCheck.push(value.name + " " + value.contactAddress);
-
-                        });
-                    });
-
-//item.contacts
-                   console.log(curtisCheck.length);
-
+                    expect(foundCurtis).toBeTruthy();
+                });
+                it("should find the 'Curtis' contactAddress entry", function () {
+                    expect(foundCurtisAddress).toBeTruthy();
+                });
+                it("should find the 'Bob' entry", function () {
+                    expect(foundBob).toBeTruthy();
+                });
+                it("should find the 'Bob' contactAddress entry", function () {
+                    expect(foundBobAddress).toBeTruthy();
+                });
+                it("should find the 'Phil' entry", function () {
+                    expect(foundPhil).toBeTruthy();
+                });
+                it("should find the 'Phil' contactAddress entry", function () {
+                    expect(foundPhilAddress).toBeTruthy();
+                });
+                it("should find the 'Stew' entry", function () {
+                    expect(foundStew).toBeTruthy();
+                });
+                it("should find the 'Stew' contactAddress entry", function () {
+                    expect(foundStewAddress).toBeTruthy();
                 });
             });
-        });
+
+        })
+        ;
     });
 });
