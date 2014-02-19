@@ -10,6 +10,7 @@ $(function () {
 
         render: function () {
             this.$el.html(this.template(this.model.toJSON()));
+            console.log("rendering single contact");
             return this;
         }
     });

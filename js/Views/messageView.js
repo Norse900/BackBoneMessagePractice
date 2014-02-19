@@ -2,20 +2,14 @@
  * Created by montgomery on 2/11/14.
  */
 $(function () {
-    var secretMessage = App.SecretMessage;
-    var messageCollection = App.MessageCollection;
+    var secretMessage = App.SecretMessage ;
     var mainMessageView = Backbone.View.extend({
         tagName: 'li',
-        el: '#dateSentMessageBodyInfo',
-        model: secretMessage,
-        initialize: function () {
-            this.collection = messageCollection;
-            this.render(secretMessage);
-            return this;
-        },
-        render: function (myModel) {
-            var template = _.template($("#messagesContentDisplay").html(), myModel.toJSON());
-            this.$el.html(template);
+        model: App.SecretMessage,
+        template : _.template($("#messagesContentDisplay").html()),
+
+        render: function () {
+            this.$el.html(this.template(this.model.toJSON()));
             return this;
         }
     });

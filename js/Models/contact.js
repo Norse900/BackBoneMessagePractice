@@ -8,11 +8,6 @@ var contact = Backbone.Model.extend({
         name: "default name",
         contactAddress: "default contact address"
     }
-/*
-*  "contact4": {
- "name": "Stew_The_Stump_Remover"
- }*/
-
 });
 
 App.Contact = new contact();

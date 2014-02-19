@@ -15,9 +15,6 @@ $(function () {
         }
     });
 
-App.ContactsView = new contactsView({collection: App.ContactCollection});
-    App.ContactsView.collection.getAllContacts();
+    App.ContactsView = new contactsView({collection: App.ContactCollection});
 
-
-})
-;
+});
