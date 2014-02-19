@@ -126,7 +126,7 @@ describe("BackBoneMessagePracticeTests Message Tests", function () {
                         var saveGivenItem = messageCollection.saveCurrentMessage((testMessageId), JSON.stringify(messageObject));
                         var itemReturned2 = JSON.parse(localStorage.getItem(testMessageId));
                         var itemReturned = JSON.parse(itemReturned2);
-                        console.log(itemReturned);
+                        //console.log(itemReturned);
                         expect(itemReturned.title.length).toBeGreaterThan(4);
                     });
                 });

@@ -3,17 +3,21 @@
  */
 $(function () {
     var contactsView = Backbone.View.extend({
-        tagName: 'ul',
+        el: "#contactListUL",
+        initialize: function () {
+            this.collection = App.ContactCollection.getAllContacts();
+            this.render();
+        },
         render: function () {
-            this.collection.each(function (contact) {
-                    var contactView = new App.ContactView({model: contact});
-                    console.log("inside contactsView");
-                    this.$el.append(contactView.render().el);
-                },
-                this);
-            return this;
-        }
-    });
+            var item = this.collection;
+
+            for (var i = 0; i < item.length; i++) {
+                var contactView = App.ContactView({model: item[i]});
+                console.log(" contactView : " +  contactView);
+                this.$el.append(contactView.render().el);
+            }
+        }});
+
 
     App.ContactsView = new contactsView({collection: App.ContactCollection});
 

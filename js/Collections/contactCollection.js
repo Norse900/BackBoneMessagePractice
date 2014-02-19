@@ -2,6 +2,7 @@
  * Created by montgomery on 2/18/14.
  */
 var App = App || {};
+var scraper = scraper();
 var contactCollection = Backbone.Collection.extend({
     model: App.Contact,
     url: function () {
@@ -11,11 +12,14 @@ var contactCollection = Backbone.Collection.extend({
     getAllContacts: function (knownItem) {
         var storage = window.localStorage;
         var retrieveContacts;
-        if (knownItem) {
-            retrieveContacts = storage.getItem(knownItem);
-        } else {
-
+        if (!knownItem) {
+            console.log("no known item given");
             retrieveContacts = _.where(storage, !null);
+        } else {
+            console.log("using known item");
+            var retrieveContactsRaw = storage.getItem(knownItem);
+            retrieveContacts = scraper(retrieveContactsRaw);
+            console.log("returning : " + retrieveContacts);
         }
         if (retrieveContacts) {
             return retrieveContacts;

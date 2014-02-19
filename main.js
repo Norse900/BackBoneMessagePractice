@@ -1,5 +1,6 @@
 (function ($) {
     var App = App || {};
+
     var messageModel = App.SecretMessage;
     var messageCollection = App.MessageCollection;
 
@@ -10,4 +11,6 @@
     var contactsView = App.ContactsView;
 
     var mainMessageView = App.MainMessageView;
+
+var scrapeObj = scraper;
 })(jQuery);
