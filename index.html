@@ -1,1 +1,77 @@
 look in specs/indexRunner.html
+<!DOCTYPE html>
+<html>
+<head>
+
+    <script src="js/jslibs/jquery-2.0.3.min.js"></script>
+    <script src="js/jslibs/require.js"></script>
+    <script src="js/jslibs/underscore-min.js"></script>
+    <script src="js/jslibs/backbone-min.js"></script>
+
+    <script src="js/jslibs/backbone.localStorage.js"></script>
+
+    <title>jasmine MSBB Runner</title>
+</head>
+<body>
+
+<div id="container">
+    <header>
+        <div id="userName"></div>
+    </header>
+    <div id="messagesListArea">
+        <script id="messagesList" type="text/template">
+            <ul id="messagesListUL">
+                <li><span><%= owner %></span> <span> <%= title %></span></li>
+            </ul>
+        </script>
+    </div>
+    <div id="messageArea">
+        <div id="messageContentArea">
+
+            <p>Message Area
+            <ul id="dateSentMessageBodyInfo">
+                <script id="messagesContentDisplay" type="text/template">
+                    <li><label>dateSent : </label><%= dateSent %></li>
+                    <li><label>Message Body : </label><%= body %></li>
+
+                </script>
+            </ul>
+            </p>
+
+            <br/><br/> End of Message Area
+        </div>
+
+    </div>
+    <div id="contactListArea">
+        <div id="contactListContentArea">
+            <p>Contacts List
+            <ul id="contactListUL">
+                <script id="contactsListDisplay" type="text/template">
+                    <li>Name : <%= name %> Contact Address : <%= contactAddress %></li>
+
+                </script>
+            </ul>
+            </p>End of Contact List Area
+        </div>
+    </div>
+</div>
+
+<script src="js/Models/Contact.js"></script>
+<script src="js/Models/Message.js"></script>
+
+<script src="js/Collections/ContactCollection.js"></script>
+<script src="js/Collections/MessageCollection.js"></script>
+
+<script src="js/Views/ContactView.js"></script>
+<script src="js/Views/ContactCollectionView.js"></script>
+<script src="js/Views/MessageView.js"></script>
+<script src="js/Views/MessageCollectionView.js"></script>
+<script src="js/Views/App.js"></script>
+
+<script src="js/Router/AppRouter.js"></script>
+
+<script src="App.js"></script>
+
+
+</body>
+</html>
