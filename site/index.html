@@ -4,11 +4,8 @@
 <head>
 
     <script src="js/jslibs/jquery-2.0.3.min.js"></script>
-    <script src="js/jslibs/require.js"></script>
     <script src="js/jslibs/underscore-min.js"></script>
     <script src="js/jslibs/backbone-min.js"></script>
-
-    <script src="js/jslibs/backbone.localStorage.js"></script>
 
     <title>jasmine MSBB Runner</title>
 </head>
@@ -20,10 +17,10 @@
         <a href="#/start" style="text-decoration: none"></a>
     </header>
     <div id="messageContainer">
-        <div id="messagesListArea">
+        <div id="messagesListArea"><p>MessageListArea</p><button id="createMessage">Create Message</button>
             <script id="messagesList" type="text/template">
                 <ul id="messagesListUL">
-                    <li><span><%= owner %></span> <span> <%= title %></span></li>
+                    <li><span><%= owner %></span> <span> <%= title %></span></li><li><button id="delete">Delete</button> </li><li><button class="add">Add</button> </li>
                 </ul>
             </script>
         </div>
@@ -47,10 +44,10 @@
     </div>
     <div id="contactListArea">
         <div id="contactListContentArea">
-            <p>Contacts List
+            <p>Contacts List<button class="addContact">Add A Contact</button>
             <ul id="contactListUL">
                 <script id="contactsListDisplay" type="text/template">
-                    <li>Name : <%= name %> Contact Address : <%= contactAddress %></li>
+                    <li>Name : <%= name %> Contact Address : <%= contactAddress %></li><li><button class="delete">Delete</button> </li>
 
                 </script>
             </ul>

@@ -19,27 +19,12 @@ var message = new mongoose.Schema({
     dateSent: String
 });
 var MessageModel = mongoose.model('message', message);
+
 var contact = new mongoose.Schema({
     name: String,
     contactAddress: String
 });
-
 var ContactModel = mongoose.model('contact', contact);
-var currentMessage = new mongoose.Schema({
-    id: String
-});
-
-var CurrentMessageModel = new mongoose.model('currentMesage', currentMessage);
-
-var draftMessage = new mongoose.Schema({
-    title: String,
-    body: String,
-    owner: String,
-    recipient: String,
-    status: String,
-    dateSent: String
-});
-var DraftMessageModel = mongoose.model('draftMessage', draftMessage);
 
 App.get('/api', function (req, res) {
     res.send('Welcome');

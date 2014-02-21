@@ -3,19 +3,23 @@
  */
 var Workspace = Backbone.Router.extend({
     routes: {
-        '/': 'index.html'
+        '/': 'index.html',
+        '/messages': function (collection) {
+            console.log("tried to follow the messages router");
+        }
 
 
-    /*
-    * delete('contacts/:id'
-    * put('/contacts/:id'
-    * App.get('/contacts
-    * App.post('/contacts'
-    *  * delete('messages/:id'
-     * put('/messages/:id'
-     * App.get('/messages
-     * App.post('/messages'
-    * */
+
+        /*
+         * delete('contacts/:id'
+         * put('/contacts/:id'
+         * App.get('/contacts
+         * App.post('/contacts'
+         *  * delete('messages/:id'
+         * put('/messages/:id'
+         * App.get('/messages
+         * App.post('/messages'
+         * */
     }
 
 });
