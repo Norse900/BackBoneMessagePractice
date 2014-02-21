@@ -19,29 +19,31 @@
         <div id="userName"></div>
         <a href="#/start" style="text-decoration: none"></a>
     </header>
-    <div id="messagesListArea">
-        <script id="messagesList" type="text/template">
-            <ul id="messagesListUL">
-                <li><span><%= owner %></span> <span> <%= title %></span></li>
-            </ul>
-        </script>
-    </div>
-    <div id="messageArea">
-        <div id="messageContentArea">
-
-            <p>Message Area
-            <ul id="dateSentMessageBodyInfo">
-                <script id="messagesContentDisplay" type="text/template">
-                    <li><label>dateSent : </label><%= dateSent %></li>
-                    <li><label>Message Body : </label><%= body %></li>
-
-                </script>
-            </ul>
-            </p>
-
-            <br/><br/> End of Message Area
+    <div id="messageContainer">
+        <div id="messagesListArea">
+            <script id="messagesList" type="text/template">
+                <ul id="messagesListUL">
+                    <li><span><%= owner %></span> <span> <%= title %></span></li>
+                </ul>
+            </script>
         </div>
+        <div id="messageArea">
+            <div id="messageContentArea">
 
+                <p>Message Area
+                <ul id="dateSentMessageBodyInfo">
+                    <script id="messagesContentDisplay" type="text/template">
+                        <li><label>dateSent : </label><%= dateSent %></li>
+                        <li><label>Message Body : </label><%= body %></li>
+
+                    </script>
+                </ul>
+                </p>
+
+                <br/><br/> End of Message Area
+            </div>
+
+        </div>
     </div>
     <div id="contactListArea">
         <div id="contactListContentArea">

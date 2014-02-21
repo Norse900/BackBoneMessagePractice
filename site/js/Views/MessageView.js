@@ -4,6 +4,10 @@
 var App = App || {};
 App.MessageView = Backbone.View.extend({
     el: '#messageArea',
-    template: _.template($("#messagesContentDisplay").html())
+    template: _.template($("#messagesContentDisplay").html()),
+    render: function(){
+        this.$el.html(this.template(this.model.toJSON()));
+        return this;
+    }
 
 });

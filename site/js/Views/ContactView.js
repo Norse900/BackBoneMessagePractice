@@ -4,6 +4,10 @@
 var App = App || {};
 App.ContactView = Backbone.View.extend({
     el: '#contactListArea',
-    template: _.template($("#contactsListDisplay").html())
+    template: _.template($("#contactsListDisplay").html()),
+    render: function(){
+        this.$el.html(this.template(this.model.toJSON()));
+        return this;
+    }
 
 });
