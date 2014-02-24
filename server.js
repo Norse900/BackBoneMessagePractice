@@ -28,6 +28,8 @@ mongoose.connect('mongodb://localhost/messageAppDB', function (err, db) {
 var App = express();
 
 // Configure server
+
+
 App.configure(function () {
     App.use(express.json());
     App.use(express.urlencoded());
