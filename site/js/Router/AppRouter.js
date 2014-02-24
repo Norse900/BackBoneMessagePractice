@@ -3,7 +3,8 @@
  */
 var Workspace = Backbone.Router.extend({
     routes: {
-        '/': 'index.html',
+        '/': 'index.html'
+        ,
         '/messages': function (collection) {
             console.log("tried to follow the messages router");
         }

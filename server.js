@@ -6,11 +6,7 @@ var application_root = __dirname,
     path = require('path'), //Utilities for dealing with file paths
     mongoose = require('mongoose'); //MongoDB integration
 
-//Create server
-var App = express();
-
-//getting cluttered. Want to move the model data out.
-var message = new mongoose.Schema({
+var messageSchema = new mongoose.Schema({
     title: String,
     body: String,
     owner: String,
@@ -18,46 +14,76 @@ var message = new mongoose.Schema({
     status: String,
     dateSent: String
 });
-var MessageModel = mongoose.model('message', message);
+var MessageModel = mongoose.model('messageSchema', messageSchema);
 
-var contact = new mongoose.Schema({
-    name: String,
-    contactAddress: String
-});
-var ContactModel = mongoose.model('contact', contact);
 
-App.get('/api', function (req, res) {
-    res.send('Welcome');
-});
-App.post('/messages', function (req, res) {
-    var message = new MessageModel({
-        body: req.body.body,
-        owner: req.body.owner,
-        recipient: req.body.recipient,
-        status: req.body.status,
-        dateSent: req.body.dateSent});
-
-    message.save(function (err) {
-        if (!err) {
-            console.log('message updated');
-        } else {
-            console.log(err);
-        }
-        return res.send(message);
-
-    });
+mongoose.connect('mongodb://localhost/messageAppDB', function (err, db) {
+    if (err) {
+        throw err;
+    } else {
+        console.log("successfully connected to the database");
+    }
 });
 
-//eventually, I will need to implement something similar to the Command Pattern
-//to get all of the needed model data from the different dbs.
+var App = express();
+
+// Configure server
+App.configure(function () {
+    App.use(express.json());
+    App.use(express.urlencoded());
+    //parses request body and populates request.body
+    App.use(express.bodyParser());
+
+    //checks request.body for HTTP method overrides
+    App.use(express.methodOverride());
+
+    //perform route lookup based on url and HTTP method
+    App.use(App.router);
+
+    //Where to serve static content
+    App.use(express.static(path.join(application_root, 'site')));
+
+    //Show all errors in development
+    App.use(express.errorHandler({ dumpExceptions: true, showStack: true }));
+
+});
+
 App.get('/messages', function (req, res) {
-    return  MessageModel.find(function (err, messages) {
+    return MessageModel.find(function (err, messages) {
         if (!err) {
             return res.send(messages);
         } else {
             return console.log(err);
         }
     });
+});
+
+App.post('/messages/', function (req, res) {
+    console.log("updating message without an id. req is :");
+    //console.dir(req);
+    var reqItem = req;
+    console.log("req is : " + reqItem.body.title);
+    var message = new MessageModel({
+        body: req.body.body,
+        owner: req.body.owner,
+        recipient: req.body.recipient,
+        status: req.body.status,
+        dateSent: req.body.dateSent
+    });
+
+    message.save(function (err) {
+        if (!err) {
+            console.log('message created');
+            console.log("message : " + message);
+            return message;
+
+        } else {
+            console.log("errored saving : " + err.message);
+            return err.message;
+        }
+
+    });
+    res.send(message);
 });
 
 App.put('/messages/:id', function (req, res) {
@@ -119,7 +145,6 @@ App.get('/contacts', function (req, res) {
         }
     });
 });
-
 App.put('/contacts/:id', function (req, res) {
     console.log("updating contact with the id : " + req.params.id);
     return ContactModel.findById(req.param.id, function (err, contact) {
@@ -139,7 +164,6 @@ App.put('/contacts/:id', function (req, res) {
         });
     });
 });
-
 App.delete('contacts/:id', function (err, contacts) {
     console.log("deleting contact : " + req.params.id);
     return ContactModel.findById(req.params.id, function (err, contact) {
@@ -149,6 +173,7 @@ App.delete('contacts/:id', function (err, contacts) {
                 return res.send('');
             } else {
                 console.log(err);
+                return;
             }
         });
     });
@@ -156,29 +181,11 @@ App.delete('contacts/:id', function (err, contacts) {
 });
 
 
-// Configure server
-App.configure(function () {
-    //parses request body and populates request.body
-    App.use(express.bodyParser());
-
-    //checks request.body for HTTP method overrides
-    App.use(express.methodOverride());
-
-    //perform route lookup based on url and HTTP method
-    App.use(App.router);
-
-    //Where to serve static content
-    App.use(express.static(path.join(application_root, 'site')));
-
-    //Show all errors in development
-    App.use(express.errorHandler({ dumpExceptions: true, showStack: true }));
-});
-
 //Start server
 var port = 4711;
 App.listen(port, function () {
     console.log('Express server listening on port %d in %s mode', port, App.settings.env);
 });
 
-mongoose.connect('mongodb://localhost/messageAppDB');
+
 
