@@ -3,9 +3,11 @@
 <html>
 <head>
 
-    <script src="js/jslibs/jquery-2.0.3.min.js"></script>
-    <script src="js/jslibs/underscore-min.js"></script>
-    <script src="js/jslibs/backbone-min.js"></script>
+    <script src="../js/jslibs/jquery-2.0.3.min.js"></script>
+    <script src="../js/jslibs/underscore-min.js"></script>
+    <script src="../js/jslibs/backbone-min.js"></script>
+
+    <link rel="stylesheet" href="JasmineJSFiles/jasmine.css">
 
     <title>jasmine MSBB Runner</title>
 </head>
@@ -45,7 +47,7 @@
 
             </ul>
             <script id="messageBodyContentDisplay" type="text/template">
-                <div id = "currentMessageBody"></div>
+                <div id="currentMessageBody"></div>
             </script>
             </p>
 
@@ -70,22 +72,30 @@
     </div>
 </div>
 
-<script src="js/Models/Contact.js"></script>
-<script src="js/Models/Message.js"></script>
+<script src="../js/Models/Contact.js"></script>
+<script src="../js/Models/Message.js"></script>
 
-<script src="js/Collections/ContactCollection.js"></script>
-<script src="js/Collections/MessageCollection.js"></script>
+<script src="../js/Collections/ContactCollection.js"></script>
+<script src="../js/Collections/MessageCollection.js"></script>
 
-<script src="js/Views/ContactView.js"></script>
-<script src="js/Views/ContactCollectionView.js"></script>
-<script src="js/Views/MessageView.js"></script>
-<script src="js/Views/MessageCollectionView.js"></script>
-<script src="js/Views/App.js"></script>
+<script src="../js/Views/ContactView.js"></script>
+<script src="../js/Views/ContactCollectionView.js"></script>
+<script src="../js/Views/MessageView.js"></script>
+<script src="../js/Views/MessageCollectionView.js"></script>
+<script src="../js/Views/App.js"></script>
 
-<script src="js/Router/AppRouter.js"></script>
+<script src="../js/Router/AppRouter.js"></script>
 
-<script src="App.js"></script>
+<script src="../App.js"></script>
 
+<script src="JasmineJSFiles/jasmine.js"></script>
+<script src="JasmineJSFiles/jasmine-html.js"></script>
+<script src="JasmineJSFiles/boot.js"></script>
 
+<script src="messageSpec.js"></script>
+<!--
+<script src="contactsListSpec.js"></script>
+<script src="userSpec.js"></script>
+-->
 </body>
 </html>

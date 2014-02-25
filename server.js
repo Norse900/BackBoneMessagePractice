@@ -54,7 +54,7 @@ App.get('/messages', function (req, res) {
     //console.log('inside messsages - GET ');
     MessageModel.find(function (err, messages) {
         if (!err) {
-            console.log("messages : " + messages);
+            //console.log("messages : " + messages);
             res.contentType('application/json');
             res.setHeader("Access-Control-Allow-Origin", "*");
             return res.json(messages);

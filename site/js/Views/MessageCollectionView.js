@@ -28,7 +28,7 @@ App.MessageCollectionView = Backbone.View.extend({
         return this;
     },
     renderMessage: function (item) {
-        console.log("renderMessage called");
+        //console.log("renderMessage called");
         var messageView = new App.MessageView({
             model: item
         });
@@ -41,7 +41,7 @@ App.MessageCollectionView = Backbone.View.extend({
         this.model.removeMessage();
     },
     getAllMessages: function () {
-        console.log("Get all messages called");
+        //console.log("Get all messages called");
         var res;
         var fetchedColl = this.collection.fetch({
             error: function (collection, response) {
@@ -49,7 +49,7 @@ App.MessageCollectionView = Backbone.View.extend({
                 res = response;
             },
             success: function (collection, response) {
-                console.log('success', response);
+                //console.log('success', response);
                 res = response;
                 return response;
             }

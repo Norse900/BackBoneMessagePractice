@@ -1,12 +1,12 @@
 /**
- * Created by montgomery on 2/20/14.
+ * Created by montgomery on 2/25/14.
  */
 var App = App || {};
-App.MessageView = Backbone.View.extend({
+App.CurrentMessageView = Backbone.View.extend({
     el: '#messagesListArea',
-    template: _.template($("#messagesList").html()),
+    template: _.template($("#messagesContentDisplay").html()),
     render: function () {
-        //console.log("MessageView rendering ");
+        console.log("CurrentMessageView rendering ");
         this.$el.append(this.template(this.model.toJSON()));
         return this;
     },
