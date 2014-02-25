@@ -7,7 +7,7 @@ App.MessageView = Backbone.View.extend({
     template: _.template($("#messagesContentDisplay").html()),
     render: function () {
         console.log("MessageView rendering ");
-        this.$el.html(this.template(this.model.toJSON()));
+        this.$el.append(this.template(this.model.toJSON()));
         return this;
     },
 
