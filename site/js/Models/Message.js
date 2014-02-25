@@ -10,5 +10,6 @@ App.MessageModel = Backbone.Model.extend({
         recipient: "default recipient",
         status: "unsent",
         dateSent: "0/0/0000"
-}
+},
+    url:"http://localhost:4711/messages"
 });

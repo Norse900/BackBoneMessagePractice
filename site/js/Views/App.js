@@ -9,6 +9,8 @@ App.AppView = Backbone.View.extend({
      this.render();
     },
     render:function(){
+
+        new App.MessageCollectionView();
         return this;
     },
     events:{

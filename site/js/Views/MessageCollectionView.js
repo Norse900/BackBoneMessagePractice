@@ -4,30 +4,26 @@
 var App = App || {};
 App.MessageCollectionView = Backbone.View.extend({
     el: '#messageContainer',
-
+    url:'/messages',
     events:{
       'click #destroy':  'removeMessage',
       'click #createMessage' : 'createMessage'
     },
     initialize: function () {
         console.log('inside initialize - MessageCollection');
-        this.collection = App.MessageCollection;
-        //this.collection.fetch();
+        this.collection = new App.MessageCollection();
+        this.getAllMessages();
         this.render();
 
     },
     render: function () {
         console.log("Render - message collection - called");
+        console.log("collection length : " + this.collection.length);
         if(this.collection.length > 0){
-        this.collection.each(function (item) {
+            this.collection.each(function (item) {
             this.renderMessage(item);
         }, this);} else{
             console.log("collection was empty.");
-
-            var item = new App.MessageModel();
-            this.renderMessage(item);
-
-
         }
         return this;
     },
@@ -49,6 +45,18 @@ App.MessageCollectionView = Backbone.View.extend({
     },
     getAllMessages: function () {
         console.log("Get all messages called");
+        var fetchedColl = this.collection.fetch({
+            error: function (collection, response) {
+                console.log('error', response);
+            },
+            success: function (collection, response) {
+                console.log('success', response);
+                return response;
+            }
+        });
+        //console.log(fetchedColl.toSource());
+        console.log('returning collection');
+        return fetchedColl;
     },
     updateMessage: function () {
         console.log("update message called");

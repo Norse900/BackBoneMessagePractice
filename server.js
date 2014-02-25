@@ -6,7 +6,8 @@ var application_root = __dirname,
     path = require('path'), //Utilities for dealing with file paths
     mongoose = require('mongoose'); //MongoDB integration
 
-var messageSchema = new mongoose.Schema({
+var Schema = mongoose.Schema;
+var messageSchema = new Schema({
     title: String,
     body: String,
     owner: String,
@@ -14,7 +15,8 @@ var messageSchema = new mongoose.Schema({
     status: String,
     dateSent: String
 });
-var MessageModel = mongoose.model('messageSchema', messageSchema);
+
+var MessageModel = mongoose.model('MessageModel', messageSchema);
 
 
 mongoose.connect('mongodb://localhost/messageAppDB', function (err, db) {
@@ -28,8 +30,6 @@ mongoose.connect('mongodb://localhost/messageAppDB', function (err, db) {
 var App = express();
 
 // Configure server
-
-
 App.configure(function () {
     App.use(express.json());
     App.use(express.urlencoded());
@@ -51,13 +51,20 @@ App.configure(function () {
 });
 
 App.get('/messages', function (req, res) {
-    return MessageModel.find(function (err, messages) {
+    //console.log('inside messsages - GET ');
+    MessageModel.find(function (err, messages) {
         if (!err) {
-            return res.send(messages);
+            console.log("messages : " + messages);
+            res.contentType('application/json');
+            res.setHeader("Access-Control-Allow-Origin", "*");
+            return res.json(messages);
         } else {
-            return console.log(err);
+            console.log(err);
+            return err;
         }
     });
+   // console.log("empty find : " + getThem.length);
+
 });
 
 App.post('/messages/', function (req, res) {
