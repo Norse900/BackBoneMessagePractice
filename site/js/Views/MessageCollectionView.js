@@ -4,25 +4,30 @@
 var App = App || {};
 App.MessageCollectionView = Backbone.View.extend({
     el: '#messageContainer',
-    url:'/messages',
-    events:{
-      'click #destroy':  'removeMessage',
-      'click #createMessage' : 'createMessage'
+    url: '/messages',
+    events: {
+        'click #destroy': 'removeMessage',
+        'click #createMessage': 'createMessage'
     },
     initialize: function () {
         console.log('inside initialize - MessageCollection');
         this.collection = new App.MessageCollection();
-        this.getAllMessages();
-        this.render();
+        var self = this;
+        var fetchedItems = this.getAllMessages().complete(function () {
+            console.log("what type : " + typeof fetchedItems);
+            self.render(fetchedItems);
+        });
+        //this.render(fetchedItems);
 
     },
-    render: function () {
+    render: function (fetchedItems) {
         console.log("Render - message collection - called");
-        console.log("collection length : " + this.collection.length);
-        if(this.collection.length > 0){
+        console.log("collection length : " + fetchedItems.length);
+        if (this.collection.length > 0) {
             this.collection.each(function (item) {
-            this.renderMessage(item);
-        }, this);} else{
+                this.renderMessage(item);
+            }, this);
+        } else {
             console.log("collection was empty.");
         }
         return this;
@@ -45,12 +50,15 @@ App.MessageCollectionView = Backbone.View.extend({
     },
     getAllMessages: function () {
         console.log("Get all messages called");
+        var res;
         var fetchedColl = this.collection.fetch({
             error: function (collection, response) {
                 console.log('error', response);
+                res = response;
             },
             success: function (collection, response) {
                 console.log('success', response);
+                res = response;
                 return response;
             }
         });
